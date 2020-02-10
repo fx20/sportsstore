@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import CategoryNavigation from "./CategoryNavigation";
 import ProductList from "./ProductList";
 
@@ -12,14 +12,14 @@ export class Shop extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-3 p-2">
+          <div className="col-2 p-2">
             <CategoryNavigation
               baseUrl="/shop/products"
               categories={this.props.categories}
             />
           </div>
-          <div className="col-9 p-2">
-            <ProductList products={this.props.products} />
+          <div className="col-10 p-2">
+            <ProductList products={this.props.products}/>
           </div>
         </div>
       </div>
