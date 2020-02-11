@@ -1,33 +1,39 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-
-export class CartSummary extends Component {
-  getSummary = () => {
-    if (this.props.cartItems > 0) {
-      return <span>
-        {this.props.cartItems} item(s),
-        ${this.props.cartPrice.toFixed(2)}
-      </span>
+const CartSummary = props => {
+  const getSummary = () => {
+    if (props.cartItems > 0) {
+      return (
+        <span>
+          {props.cartItems} item(s), ${props.cartPrice.toFixed(2)}
+        </span>
+      );
     } else {
-      return <span>Your cart : (empty) </span>
+      return <span>Your cart : (empty) </span>;
     }
   };
 
-  getLinkClasses = () => {
-    return `btn btn-dark text-white ${this.props.cartItems === 0 ? "disable" : ""}`;
+  const getLinkClasses = () => {
+    return `btn btn-dark text-white ${props.cartItems === 0 ? "disable" : ""}`;
   };
 
-  render() {
-    return <div className="float-right">
+  return (
+    <div className="float-right">
       <small>
-        {this.getSummary()}
-        <Link className={this.getLinkClasses()} to='/shop/cart'>
+        {getSummary()}
+        <Link className={getLinkClasses()} to="/shop/cart">
           <i className="fa fa-shopping-cart"></i>
         </Link>
       </small>
     </div>
-  }
+  );
+};
 
+export default CartSummary;
 
+CartSummary.propTypes = {
+  cartItems: PropTypes.number,
+  cartPrice: PropTypes.number
 }

@@ -1,24 +1,26 @@
-import React, {Component} from "react";
-import {ToggleLink} from "../ToggleLink";
+import React from "react";
+import ToggleLink from "../ToggleLink";
+import PropTypes from 'prop-types';
 
-// import { Link } from "react-router-dom";
-
-class CategoryNavigation extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <ToggleLink to={this.props.baseUrl} exact={true}>All</ToggleLink>
-        {this.props.categories &&
-        this.props.categories.map(cat => (
-          <ToggleLink key={cat}
-                      to={`${this.props.baseUrl}/${cat.toLowerCase()}`}
-          >
+const CategoryNavigation = props => {
+  return (
+    <>
+      <ToggleLink to={props.baseUrl} exact={true}>
+        All
+      </ToggleLink>
+      {props.categories &&
+        props.categories.map(cat => (
+          <ToggleLink key={cat} to={`${props.baseUrl}/${cat.toLowerCase()}`}>
             {cat}
           </ToggleLink>
         ))}
-      </React.Fragment>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default CategoryNavigation;
+
+CategoryNavigation.propTypes = {
+  baseUrl: PropTypes.string,
+  categories: PropTypes.array
+}
