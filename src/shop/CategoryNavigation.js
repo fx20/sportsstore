@@ -23,4 +23,4 @@ export default CategoryNavigation;
 CategoryNavigation.propTypes = {
   baseUrl: PropTypes.string,
   categories: PropTypes.array
-}
+};

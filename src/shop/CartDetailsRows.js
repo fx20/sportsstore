@@ -4,7 +4,7 @@ const CartDetailsRows = props => {
   const handleChange = (product, event) => {
     props.updateQuantity(product, event.target.value);
   };
-  if (!props.cart || props.cart.lenght === 0) {
+  if (!props.cart || props.cart.length === 0) {
     return (
       <tr>
         <td colSpan="5">Your Cart Is Empty</td>
@@ -23,7 +23,7 @@ const CartDetailsRows = props => {
               />
             </td>
             <td>{item.product.name}</td>
-            <td>${item.product.price.toFix(2)}</td>
+            <td>${item.product.price.toFixed(2)}</td>
             <td>${(item.quantity * item.product.price).toFixed(2)}</td>
             <td>
               <button

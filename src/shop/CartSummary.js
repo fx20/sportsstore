@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const CartSummary = props => {
@@ -24,7 +24,7 @@ const CartSummary = props => {
       <small>
         {getSummary()}
         <Link className={getLinkClasses()} to="/shop/cart">
-          <i className="fa fa-shopping-cart"></i>
+          <i className="fa fa-shopping-cart"/>
         </Link>
       </small>
     </div>
@@ -36,4 +36,4 @@ export default CartSummary;
 CartSummary.propTypes = {
   cartItems: PropTypes.number,
   cartPrice: PropTypes.number
-}
+};

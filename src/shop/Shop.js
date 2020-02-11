@@ -38,5 +38,6 @@ export default Shop;
 Shop.propTypes = {
   categories: PropTypes.array,
   products: PropTypes.array,
-  addToCart: PropTypes.func
+  addToCart: PropTypes.func,
+  history: PropTypes.string
 };
