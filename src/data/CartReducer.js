@@ -1,7 +1,7 @@
-import { ActionTypes } from "./Types";
+import {ActionTypes} from "./Types";
 
 const CartReducer = (storeData, action) => {
-  let newStore = { cart: [], cartItems: 0, cartPrice: 0, ...storeData };
+  let newStore = {cart: [], cartItems: 0, cartPrice: 0, ...storeData};
   switch (action.type) {
     case ActionTypes.CART_ADD: {
       const p = action.payload.product;
@@ -41,7 +41,7 @@ const CartReducer = (storeData, action) => {
     }
 
     case ActionTypes.CART_CLEAR:
-      return { ...storeData, cart: [], cartItems: 0, cartPrice: 0 };
+      return {...storeData, cart: [], cartItems: 0, cartPrice: 0};
 
     default:
       return storeData || {};

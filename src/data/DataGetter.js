@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { DataTypes } from "../data/Types";
+import React, {Component} from "react";
+import {DataTypes} from "../data/Types";
 
 export class DataGetter extends Component {
   render() {
@@ -22,7 +22,7 @@ export class DataGetter extends Component {
     };
 
     if (Object.keys(rtData).find(key => dsData[key] !== rtData[key])) {
-      this.props.LoadData(DataTypes.PRODUCTS, rtData);
+      this.props.loadData(DataTypes.PRODUCTS, rtData);
     }
   };
 }

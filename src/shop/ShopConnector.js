@@ -1,25 +1,20 @@
-import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import LoadData from "../data/ActionCreators";
-import { DataTypes } from "../data/Types";
+import React, {Component} from "react";
+import {Redirect, Route, Switch} from "react-router-dom";
+import {connect} from "react-redux";
+import {loadData} from "../data/ActionCreators";
+import {DataTypes} from "../data/Types";
 import Shop from "./Shop";
-import {
-  addToCart,
-  updateCartQuantity,
-  removeFromCart,
-  clearCart
-} from "../data/CartActionCreators";
+import {addToCart, clearCart, removeFromCart, updateCartQuantity} from "../data/CartActionCreators";
 import PropTypes from "prop-types";
 import CartDetails from "./CartDetails";
-import { DataGetter } from "../data/DataGetter";
+import {DataGetter} from "../data/DataGetter";
 
 const mapStateToProps = dataStore => ({
   ...dataStore
 });
 
 const mapDispatchToProps = {
-  LoadData,
+  loadData,
   addToCart,
   updateCartQuantity,
   removeFromCart,
@@ -47,12 +42,13 @@ class ShopConnector extends Component {
           path="/shop/cart"
           render={routeProps => <CartDetails {...this.props} {...routeProps} />}
         />
-        <Redirect to="/shop/products/all/1" />
+        <Redirect to="/shop/products/all/1"/>
       </Switch>
     );
   }
+
   componentDidMount() {
-    this.props.LoadData(DataTypes.CATEGORIES);
+    this.props.loadData(DataTypes.CATEGORIES);
   }
 }
 
