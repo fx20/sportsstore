@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const CartSummary = props => {
+  console.log(props);
   const getSummary = () => {
     if (props.cartItems > 0) {
       return (

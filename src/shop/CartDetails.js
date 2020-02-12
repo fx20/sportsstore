@@ -4,6 +4,7 @@ import CartDetailsRows from "./CartDetailsRows";
 import PropTypes from "prop-types";
 
 const CartDetails = props => {
+  console.log(props);
   const getLinkClasses = () =>
     `btn btn-secondary m-1 ${props.cartItems === 0 ? "disable" : ""}`;
 

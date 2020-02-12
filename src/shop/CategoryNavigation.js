@@ -1,11 +1,11 @@
 import React from "react";
 import ToggleLink from "../ToggleLink";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const CategoryNavigation = props => {
   return (
     <>
-      <ToggleLink to={props.baseUrl} exact={true}>
+      <ToggleLink to={`${props.baseUrl}/all`} exact={false}>
         All
       </ToggleLink>
       {props.categories &&

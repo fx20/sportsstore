@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { loadData } from "../data/ActionCreators";
+import LoadData from "../data/ActionCreators";
 import { DataTypes } from "../data/Types";
 import Shop from "./Shop";
 import {
@@ -12,53 +12,47 @@ import {
 } from "../data/CartActionCreators";
 import PropTypes from "prop-types";
 import CartDetails from "./CartDetails";
+import { DataGetter } from "../data/DataGetter";
 
 const mapStateToProps = dataStore => ({
   ...dataStore
 });
 
 const mapDispatchToProps = {
-  loadData,
+  LoadData,
   addToCart,
   updateCartQuantity,
   removeFromCart,
   clearCart
 };
 
-const filterProducts = (products = [], category) =>
-  !category || category === "All"
-    ? products
-    : products.filter(p => p.category.toLowerCase() === category.toLowerCase());
-
 class ShopConnector extends Component {
   render() {
-    console.log(this.props);
     return (
       <Switch>
+        <Redirect
+          from="/shop/products/:category"
+          to="/shop/products/:category/1"
+          exact={true}
+        />
         <Route
-          path="/shop/products/:category?"
+          path={"/shop/products/:category/:page"}
           render={routeProps => (
-            <Shop
-              {...this.props}
-              {...routeProps}
-              products={filterProducts(
-                this.props.products,
-                routeProps.match.params.category
-              )}
-            />
+            <DataGetter {...this.props} {...routeProps}>
+              <Shop {...this.props} {...routeProps} />
+            </DataGetter>
           )}
         />
         <Route
           path="/shop/cart"
           render={routeProps => <CartDetails {...this.props} {...routeProps} />}
         />
-        <Redirect to="/shop/products" />
+        <Redirect to="/shop/products/all/1" />
       </Switch>
     );
   }
   componentDidMount() {
-    this.props.loadData(DataTypes.CATEGORIES);
-    this.props.loadData(DataTypes.PRODUCTS);
+    this.props.LoadData(DataTypes.CATEGORIES);
   }
 }
 
@@ -66,5 +60,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(ShopConnector);
 
 ShopConnector.propTypes = {
   products: PropTypes.array,
-  loadData: PropTypes.func
+  LoadData: PropTypes.func
 };

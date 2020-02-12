@@ -1,4 +1,4 @@
-export const CommonReducer = (...reducer) => (storeData, action) => {
+const CommonReducer = (...reducer) => (storeData, action) => {
   for (let i = 0; i < reducer.length; i++) {
     let newStore = reducer[i](storeData, action);
     if (newStore !== storeData) {
@@ -6,4 +6,6 @@ export const CommonReducer = (...reducer) => (storeData, action) => {
     }
   }
   return storeData;
-}
+};
+
+export default CommonReducer;
