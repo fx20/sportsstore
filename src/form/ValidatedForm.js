@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import ValidationError from "./ValidationError";
 
 export class ValidatedForm extends Component {
   constructor(props) {
