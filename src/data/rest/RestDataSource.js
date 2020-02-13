@@ -1,10 +1,18 @@
 import Axios from "axios";
 import RestUrls from "../Urls";
 
-const RestDataSource = async (dataType, params) =>
+const GetData = async (dataType, params) =>
   SendRequest("get", RestUrls[dataType], params);
 
-const SendRequest = (method, url, params) =>
-  Axios.request({method, url, params});
+const StoreData = (dataType, data) => {
+  SendRequest("post", RestUrls[dataType], {}, data);
+};
 
-export default RestDataSource;
+const SendRequest = (method, url, params, data) =>
+  Axios.request({method, url, params, data});
+
+
+export default {
+  GetData,
+  StoreData
+}
