@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const PaginationButtons = props => {
   const getPageNumber = () => {
@@ -59,3 +60,10 @@ const PaginationButtons = props => {
 };
 
 export default PaginationButtons;
+
+PaginationButtons.propTypes = {
+  pageCount: PropTypes.number,
+  currentPage: PropTypes.number,
+  navigate: PropTypes.func
+};
+
